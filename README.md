@@ -25,15 +25,10 @@ Using Perlin noise functions, I generate two height maps, one for the road-like 
 
 After I generated the hight maps, I used a mix function with respect to a FBM noise coefficient to generate the real terrain. 
 
-The terrain map looks like this:                                      The rock map looks like this:
+terrain map     |  rock map       | mixing map
+:--------------:|:---------------:|:---------------:
+![](terrain.png)|![](rock.png)    |![](terrain_rock.png)
 
-terrain map     |  rock map
-:--------------:|:---------------:
-![](terrain.png)|![](rock.png)
-
-And by mixing them together, we get a new map like this:
-
-![](terrain_rock.png)
 
 
 
