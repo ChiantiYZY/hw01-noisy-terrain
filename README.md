@@ -7,19 +7,13 @@
 ## Citation and Reference
 The code I used to generate the terrain includes external noise functions I found online:
 - Perlin Noise
-and applies a blue distance fog to it to blend it into the background. This
-shader also provides a few noise functions that include "seed" input; this
-value lets you offset the input vec2 by some constant value so that you can
-get two different noise values for the same input position.
-- A movable camera like the one provided with homework 0
-- A keyboard input listener that, at present, listens for the WASD keys
-and updates a `vec2` in the plane shader representing a 2D position
-- A square that spans the range [-1, 1] in X and Y that is rendered with a
-shader that does not apply a projection matrix to it, thus rendering it as the
-"background" of your scene
+https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83
+- WOrley Noise and FBM Noise
+https://github.com/Erkaman/glsl-worley 
+I also took a look at Red Blob Gems https://www.redblobgames.com/maps/terrain-from-noise/ when decided my variables for applying the noise function.
 
 When you run the program, you should see this scene:
-![](startScene.png)
+![](start_img.jpg)
 
 ## Assignment Requirements
 - __(75 points)__ Modify the provided terrain shader so that it incorporates various noise
