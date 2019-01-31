@@ -6,16 +6,35 @@
 
 ## Citation and Reference
 The code I used to generate the terrain includes external noise functions I found online:
-- Perlin Noise
+- **Perlin Noise**
+
 https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83
-- WOrley Noise and FBM Noise
+- **Worley Noise and FBM Noise**
+
 https://github.com/Erkaman/glsl-worley 
-I also took a look at Red Blob Gems https://www.redblobgames.com/maps/terrain-from-noise/ when decided my variables for applying the noise function.
+
+- I also took a look at Red Blob Gems https://www.redblobgames.com/maps/terrain-from-noise/ when decided my variables for applying the noise function.
 
 When you run the program, you should see this scene:
 ![](start_img.jpg)
 
-## Assignment Requirements
+## Project Explained 
+### Basic Algorithms
+My project simply relied on Perlin noise functions and Worley noise functions. 
+Using Perlin noise functions, I generate two height maps, one for the road-like terrain and another for the scattered rocks. The road map is smoother such that it could generate flat surface whereas the rocks have steeper slopes which make them look more rock-ish. Originally when I came up with the functions, I was thinking about forest with high, tall trees, but it doesn't look well so I just changed the color map and make it kind of like a great wall (wonder Trump likes this style lol).
+
+After I generated the hight maps, I used a mix function with respect to a FBM noise coefficient to generate the real terrain. 
+
+The terrain map looks like this:                                      The rock map looks like this:
+
+![](terrain.png)    ![](rock.png)
+
+And by mixing them together, we get a new map like this:
+
+![](terrain_rock.png)
+
+
+
 - __(75 points)__ Modify the provided terrain shader so that it incorporates various noise
 functions and noise function permutations to deform the surface and
 modify the color of the subdivided plane to give it the appearance of
