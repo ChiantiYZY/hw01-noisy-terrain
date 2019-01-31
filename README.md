@@ -27,6 +27,8 @@ After I generated the hight maps, I used a mix function with respect to a FBM no
 
 The terrain map looks like this:                                      The rock map looks like this:
 
+terrain map     |  rock map
+:--------------:|:---------------:
 ![](terrain.png)|![](rock.png)
 
 And by mixing them together, we get a new map like this:
