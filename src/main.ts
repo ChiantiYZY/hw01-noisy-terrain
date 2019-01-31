@@ -1,4 +1,4 @@
-import {vec2, vec3} from 'gl-matrix';
+import {vec2, vec3, vec4} from 'gl-matrix';
 import * as Stats from 'stats-js';
 import * as DAT from 'dat-gui';
 import Square from './geometry/Square';
@@ -13,6 +13,10 @@ import ShaderProgram, {Shader} from './rendering/gl/ShaderProgram';
 const controls = {
   tesselations: 5,
   'Load Scene': loadScene, // A function pointer, essentially
+  terrain_size: 6,
+  terrain_display: 10,
+  terrain_distribution: 2.5,
+  sea_level: 0.2,
 };
 
 let square: Square;
@@ -83,6 +87,11 @@ function main() {
   // Add controls to the gui
   const gui = new DAT.GUI();
 
+  gui.add(controls, 'terrain_size', 1, 50).step(5);
+  gui.add(controls, 'terrain_display', 1, 50).step(5);
+  gui.add(controls, 'terrain_distribution', 0.1, 3).step(0.5);
+  gui.add(controls, 'sea_level', -0.1, 1.1).step(0.05);
+
   // get canvas and webgl context
   const canvas = <HTMLCanvasElement> document.getElementById('canvas');
   const gl = <WebGL2RenderingContext> canvas.getContext('webgl2');
@@ -139,12 +148,15 @@ function main() {
     gl.viewport(0, 0, window.innerWidth, window.innerHeight);
     renderer.clear();
     processKeyPresses();
+
+    let size:vec4 = vec4.fromValues(controls.terrain_size, controls.terrain_display, controls.terrain_distribution, controls.sea_level);
+
     renderer.render(camera, lambert, [
-      plane,
-    ]);
-    renderer.render(camera, flat, [
-      square,
-    ]);
+      plane, 
+    ], size);
+    // renderer.render(camera, flat, [
+    //   square,
+    // ]);
     stats.end();
 
     // Tell the browser to call `tick` again whenever it renders a new frame

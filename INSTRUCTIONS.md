@@ -1,12 +1,12 @@
 # CIS 566 Homework 1: Noisy Terrain
 
-## Programmer Information
-- Name: Chianti Yan
-- PennKey: 85100574
+## Objective
+- Continue practicing WebGL and Typescript
+- Experiment with noise functions to procedurally generate the surface of a planet
 
-## Citation and Reference
-The code I used to generate the terrain includes external noise functions I found online:
-- Perlin Noise
+## Base Code
+The code we have provided for this assignment features the following:
+- A subdivided plane rendered with a shader that deforms it with a sine curve
 and applies a blue distance fog to it to blend it into the background. This
 shader also provides a few noise functions that include "seed" input; this
 value lets you offset the input vec2 by some constant value so that you can
